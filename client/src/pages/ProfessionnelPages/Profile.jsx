@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import Inputs from "../../components/Inputs";
 import { useDispatch, useSelector } from "react-redux";
 import Classnames from "classnames";
+
+import { Switch } from "antd";
+ 
 import { AddProfile, GetProfile } from "../../redux/actions/profileActions";
 import AccountNav from "../../components/Account/AccountNav";
 function Profile() {
   const [form, setForm] = useState({});
+const [localisation, setLocalisation] = useState({});
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors);
   const profiles = useSelector((state) => state.profiles);
@@ -22,11 +26,34 @@ function Profile() {
     e.preventDefault();
     dispatch(AddProfile(form, setShow, setMessage));
   };
+  function onChange(checked, e) {
+      console.log(`${checked}`);
+    if (`${checked}` === "true") {
+    
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocalisation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      setLocalisation({
+        latitude: null,
+        longitude: null,
+      });
+    }
+    setForm({
+      ...form,
+      Localisation: localisation,
+    });
+    console.log(form)
+  }
 
   useEffect(async () => {
     await dispatch(GetProfile());
     setForm(profiles.profile);
   }, []);
+  console.log(form)
   return (
     <div>
       <AccountNav />
@@ -57,7 +84,14 @@ function Profile() {
                 onChangeHandler={onChangeHandler}
                 errors={errors.category}
               />
-              <Inputs
+              <label>Localisation </label>
+              <Switch
+                name="Localisation"
+                defaultChecked={false}
+                onChange={onChange}
+                onChangeHandler={onChangeHandler}
+              />
+               <Inputs
                 name="tel"
                 label="tel"
                 value={form && form.tel ? form.tel : ""}

@@ -3,12 +3,11 @@ import { useLocation } from "react-router-dom";
 
 function Footer() {
     const { pathname } = useLocation();
-  console.log(pathname);
   // you can check a more conditions here
   if (pathname === "/SearchPage") return null;
   return (
     <div>
-      <div className="min-h-[200px] w-full bg-gray-100 py-8 mt-24  ">
+      <div className="min-h-[200px] w-full bg-gray-100 py-8 mt-2  ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mx-10 gap-y-12">
           <div className="flex flex-col gap-y-3"></div>
           <div className="space-y-3">

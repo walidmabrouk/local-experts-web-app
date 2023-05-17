@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../Card';
+import { GetProfile } from '../../redux/actions/profileActions';
+import { useDispatch, useSelector } from 'react-redux';
 
-function MainComponent() {
+function MainComponent({ profiles }) {
+console.log(profiles.profiles.length);
   return (
-    <main className=" mt-4 mr-8" >
+    <main className=" mt-4 mr-8">
       <div className="mt-3 mx-2 lg:ml-0 lg:mr-4 lg:mt-12">
         <div className="flex flex-col gap-3 lg:flex-row">
           <div className="flex lg:flex-row flex-col items-center gap-2">
             <div>
-              <h1 className="text-2xl font-bold text-blue-700">Immobilier</h1>
+              <h1 className="text-2xl font-bold text-blue-700">
+                Toutes les professionnels
+              </h1>
             </div>
             <data className="block text-xs text-center md:text-start font-medium text-gray-700">
-              (0 annonces)
+              ({profiles.profiles.length} annonces)
             </data>
           </div>
           <div className="flex flex-col gap-2 lg:flex-row" />
@@ -31,7 +36,15 @@ function MainComponent() {
           <div>
             <div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5 gap-1 sm:gap-4 lg:gap-6">
-                <Card />
+                {profiles.profiles.map((profile) => (
+                  <Card
+                    imagesrc={profile.profilePhoto.url}
+                    value={profile.price}
+                    name={profile.user.name}
+                    category={profile.category}
+                    Location={profile.city}
+                  />
+                ))}
               </div>
             </div>
           </div>

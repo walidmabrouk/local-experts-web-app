@@ -2,13 +2,13 @@ import React from "react";
 
 function Icon() {
   return (
-    <div className="mx-0 mt-[-1px] flex-none">
+  
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="200"
+        width="97%"
         height="37.5"
         version="1.1"
-        viewBox="0 0 52.917 8.129"
+        viewBox="0 0 52.916667 8.1293387"
       >
         <defs>
           <linearGradient id="myGradient" x1="0%" x2="100%" y1="50%" y2="50%">
@@ -71,7 +71,7 @@ function Icon() {
           </path>
         </g>
       </svg>
-    </div>
+
   );
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ERRORS, SET_USER } from "../types";
+import { ERRORS, SET_IS_EMAIL_VERIFIED, SET_USER } from "../types";
 import jwt_decode from "jwt-decode";
 import { setAuth } from "../../util/setAuth";
 
@@ -10,6 +10,22 @@ export const Registration = (form, navigate) => (dispatch) => {
       navigate("/login");
       dispatch({
         type: ERRORS,
+        payload: {},
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+export const verifyEmail = (userId, token) => (dispatch) => {
+  axios
+    .get(`/api/auth/${userId}/verify/${token}`)
+    .then((res) => {
+      dispatch({
+        type: SET_IS_EMAIL_VERIFIED,
         payload: {},
       });
     })

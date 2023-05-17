@@ -11,7 +11,16 @@ const UserProfile = new Schema(
     category: "string",
     tel: "string",
     city: "string",
+    rating: Number,
     bio: "string",
+    profilePhoto: {
+      type: Object,
+      default: {
+        url: "",
+        publicId: null,
+      }
+    },
+    Localisation: Object ,
     postalcode: "string",
     address: "string",
     price: Number,

@@ -1,8 +1,27 @@
 import React from "react";
 import SelectedInput from "./SelectedInput";
 import PriceInput from "./PriceInput";
-
+import datas from "../../state-municipality.json";
 function Aside() {
+function getDelegationNames(regionName, datas) {
+  let delegationNames = [];
+
+  datas.map((data) => {
+    if (data.Name === regionName) {
+      data.Delegations.map((delegation) => {
+        delegationNames = [...delegationNames, delegation.Name];
+      });
+    }
+  });
+
+  return delegationNames;
+}
+
+  
+  
+const delegationNames = getDelegationNames("MAHDIA", datas);
+console.log(delegationNames);
+
   return (
     <aside className="relative w-fit  mt-16 lg:mt-2  flex flex-col">
       <div className="max-w-min grow-0 flex items-center justify-center lg:justify-between h-34 py-1 px-2 md:px-3 lg:px-4">
@@ -139,12 +158,9 @@ function Aside() {
               <div className="w-full lg:h-[calc(100vh-240px)] lg:overflow-y-auto">
                 <div className="pt-4 mb-2">
                   <div className="relative md:max-w-4xl mx-auto transition-width duration-300 pr-3 ">
-                    <form
-                      className="
-        lg:max-w-[260px] xl:max-w-300px] 2xl:max-w-[400px] relative "
-                    >
+                    <form className="lg:max-w-[260px] xl:max-w-300px] 2xl:max-w-[400px] relative ">
                       <input
-                        className="pl-12 undefined text-base cursor-text input-md flex outline-offset-0 outline-1 
+                        className="  text-base cursor-text input-md flex outline-offset-0 outline-1 
             placeholder:text-neutral-500/80 hover:outline-neutral-400
             focus:outline-offset-0 font-extrabold font-arabic transition-width duration-300
             focus:bg-neutral-600 pl-10 !outline-none placeholder:text-neutral-500 w-full
@@ -152,7 +168,6 @@ function Aside() {
             bg-neutral-200 text-neutral-600 
             undefined"
                         placeholder="Rechercher sur ExpertServices"
-                        defaultValue
                       />
                       <span className="absolute inset-0 max-w-full flex items-center justify-between pointer-events-none pl-3">
                         <span>
@@ -188,13 +203,25 @@ function Aside() {
                       <div className="grid grid-cols-2 gap-3">
                         <PriceInput />
                         <PriceInput />
+                        <SelectedInput
+                          name="Ville"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                        />
+                        <SelectedInput
+                          name="Délégation"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                        />
+                        <SelectedInput
+                          name="Categorie"
+                          d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                        />
+                        <SelectedInput
+                          name="sub-categorie"
+                          d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                        />
                       </div>
                     </div>
                   </div>
-                  <SelectedInput />
-                  <SelectedInput />
-                  <SelectedInput />
-                  <SelectedInput />
                 </div>
                 <button
                   aria-label="Filtrer"
@@ -262,6 +289,9 @@ function Aside() {
           </div>
         </div>
       </div>
+      {datas.map((data) => {
+        return <div key={data.id}>{data.Name}</div>;
+      })}
     </aside>
   );
 }

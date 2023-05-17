@@ -40,22 +40,32 @@ export const GetProfile = ()=>dispatch=>{
       });
 }
 
-export const GetProfiles = ()=>dispatch=>{
-    axios
-      .get("/api/profiles")
-      .then(res => {
-          dispatch({
-              type: SET_PROFILES,
-              payload: res.data
-          })
-      })
-      .catch(err => {
-          dispatch({
-              type: ERRORS,
-              payload: err.response.data
-          })
+export const searchAction = (searchObject) => (dispatch) => {
+  axios
+    .get("/api/profiles", {
+      params: searchObject,
+    })
+
+};
+
+export const GetProfiles = (searchObject) => (dispatch) => {
+  axios
+    .get(`/api/profiles`, {
+      params: searchObject,
+    })
+    .then((res) => {
+      dispatch({
+        type: SET_PROFILES,
+        payload: res.data,
       });
-}
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
 
 export const DeleteProfile = (id)=>dispatch=>{
    if(window.confirm("are you sure to delete this user?")){

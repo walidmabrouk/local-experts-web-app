@@ -14,6 +14,7 @@ function Card(props) {
                 <div className="w-full aspect-video" />
                 {/* Ajouter une image au card */}{" "}
                 <img
+                  src={props.imagesrc}
                   alt=""
                   decoding="async"
                   data-nimg="fill"
@@ -37,7 +38,7 @@ function Card(props) {
                   value={props.value}
                   className="text-blue-500 font-bold font-arabic  font-extrabold text-primary "
                 >
-                  <span className="mr-1">40</span>
+                  <span className="mr-1">{props.value}</span>
                   <span className="text-xs font-medium">DT</span>
                 </data>
                 <h2 className="card-title font-arabic text-sm font-medium leading-5 text-gray-800 max-w-min min-w-full line-clamp-2 mb-2 mt-1">
@@ -79,7 +80,7 @@ function Card(props) {
                     />
                   </svg>
                   <span className="truncate text-xs w-3/5 font-medium text-neutral-500">
-                    {props.Location},il y a{props.Timestamp}
+                    {props.Location}
                   </span>
                 </div>
               </div>

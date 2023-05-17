@@ -23,6 +23,19 @@ import Profile from "./pages/ProfessionnelPages/Profile";
 import AccountPostPage from "./pages/ProfessionnelPages/AccountPostPage";
 import BookingPage from "./pages/ProfessionnelPages/BookingPage";
 import PostsFormPage from "./pages/ProfessionnelPages/PostsFormPage";
+import "react-multi-carousel/lib/styles.css";
+import Account from "./pages/ProfessionnelPages/Account";
+import UpdateProfileModal from "./components/UpdateProfileModal";
+import Posts from "./pages/ProfessionnelPages/Posts";
+import Category from "./components/Posts/Category";
+import CreatePost from "./pages/ProfessionnelPages/CreatePost";
+import PostDetails from "./pages/ProfessionnelPages/PostDetails";
+import VerifyEmail from "./pages/verify-email/VerifyEmail";
+import { Navigate } from "react-router-dom";
+import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
+import NotificationPage from "./pages/ProfessionnelPages/NotificationPage";
+
 
 if (window.localStorage.jwt) {
   const decode = jwt_decode(window.localStorage.jwt);
@@ -36,6 +49,15 @@ if (window.localStorage.jwt) {
 }
 
 function App() {
+
+  const [socket, setSocket] = useState(null);
+
+
+  useEffect(() => {
+    setSocket(io("http://localhost:5000"));
+  }, []);
+
+
   const auth = useSelector((state) => state.auth);
   const user = {
     //* auth.isConnected and auth.user.role from database
@@ -45,9 +67,15 @@ function App() {
     name: auth.user.name,
     id: auth.user.name
   };
+  console.log(user.name)
+    useEffect(() => {
+      socket?.emit("newUser", user.name);
+    }, [socket, user]);
+  
+  
   return (
     <BrowserRouter>
-      <Header user={user} />
+      <Header socket={socket} user={user} />
       <div>
         <Routes>
           <Route
@@ -67,6 +95,10 @@ function App() {
             }
           />
           <Route
+            path="/users/:userId/verify/:token"
+            element={user ? <VerifyEmail /> : <Navigate to="/" />}
+          />
+          <Route
             path="/admin"
             element={
               <AdminRouter user={user}>
@@ -83,6 +115,46 @@ function App() {
             }
           />
           <Route
+            path="/posts"
+            element={
+              <PrivateRouter user={user}>
+                <Posts socket={socket} user={user} />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <PrivateRouter user={user}>
+                <NotificationPage socket={socket} user={user} />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/createpost"
+            element={
+              <PrivateRouter user={user}>
+                <CreatePost />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/posts/details/:id"
+            element={
+              <PrivateRouter user={user}>
+                <PostDetails socket={socket} user={user} />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/posts/category/:category"
+            element={
+              <PrivateRouter user={user}>
+                <Category />
+              </PrivateRouter>
+            }
+          />
+          <Route
             path="/SearchPage"
             element={
               <PrivateRouter user={user}>
@@ -90,12 +162,19 @@ function App() {
               </PrivateRouter>
             }
           />
-
           <Route
             path="/account"
             element={
               <PrivateRouter user={user}>
-                <Profile />
+                <Account />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/modifyaccount"
+            element={
+              <PrivateRouter user={user}>
+                <UpdateProfileModal />
               </PrivateRouter>
             }
           />
@@ -131,7 +210,6 @@ function App() {
               </PrivateRouter>
             }
           />
-
           <Route path="*" element={<NotFound />} />
           <Route path="/noaccess" element={<NoAccess />} />
         </Routes>

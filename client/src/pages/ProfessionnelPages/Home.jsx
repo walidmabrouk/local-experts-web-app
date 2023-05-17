@@ -1,19 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../../components/Home/SearchBar";
 import HomeServices from "../../components/Home/HomeServices";
 import Card from "../../components/Card";
 import ListSubCategory from "../../components/Home/ListSubCategory";
 import AllAnnouncements from "../../components/Home/AllAnnouncements";
-import img from "../../assets/media/logo_footer.jpg";
+import HomeIMG from "../../assets/media/Home.png";
+import LeconsIMG from "../../assets/media/image__3_-removebg-preview.png";
+import clothes from "../../assets/media/plumber.jpg";
+import BienEtreIMG from "../../assets/media/image__5_-removebg-preview.png";
+import { useDispatch, useSelector } from "react-redux";
+import { GetProfile, GetProfiles } from "../../redux/actions/profileActions";
+import Carousel from "react-multi-carousel";
+import { fetchPosts } from "../../redux/actions/postActions";
+import { ToastContainer } from "react-toastify";
 
 function Home() {
-  
- const ColorCard4 = ("absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-rose-700 via-purple-900  shadow-purple-300") 
- const ColorCard1 = ("absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-blue-500 via-blue-500 to-blue-700 shadow-blue-300") 
- const ColorCard2 = ("absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-teal-400 to-blue-700 shadow-cyan-300") 
- const ColorCard3 ="absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-teal-400 to-cyan-400 shadow-cyan-300"; 
- const ColorCard5 ="absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-rose-700 via-rose-900  shadow-purple-300"; 
- const ColorCard6 ="absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-emerald-500/60 via-emerald-500  shadow-cyan-300"; 
+  const dispatch = useDispatch();
+  useEffect(async () => {
+    await dispatch(await fetchPosts(1));
+    await dispatch(await GetProfile());
+  }, []);
+  const profiles = useSelector((state) => state.profiles);
+  const posts = useSelector((state) => state.posts.posts);
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 7,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+  };
+  const ColorCard4 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-rose-700 via-purple-900  shadow-purple-300";
+  const ColorCard1 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-blue-500 via-blue-500 to-blue-700 shadow-blue-300";
+  const ColorCard2 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-teal-400 to-blue-700 shadow-cyan-300";
+  const ColorCard3 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-teal-400 to-cyan-400 shadow-cyan-300";
+  const ColorCard5 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-rose-700 via-rose-900  shadow-purple-300";
+  const ColorCard6 =
+    "absolute ml-2 mt-4 inset-0 mx-auto bg-gradient-to-br preserve-3d rotate-n-push-z z-[-1] rounded-3xl hidden sm:block transition-transform shadow-2xl from-emerald-500/60 via-emerald-500  shadow-cyan-300";
   const Icon = (
     <svg
       stroke="currentColor"
@@ -51,9 +88,10 @@ function Home() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z" />
-    </svg>)
+    </svg>
+  );
   const SchoolSVG = (
-    < svg
+    <svg
       stroke="currentColor"
       fill="#4987f8"
       strokeWidth={0}
@@ -62,10 +100,8 @@ function Home() {
       width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96H48C21.5 96 0 117.5 0 144V464c0 26.5 21.5 48 48 48H592c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H473.7L337.8 5.4zM256 416c0-35.3 28.7-64 64-64s64 28.7 64 64v96H256V416zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V208c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H512c-8.8 0-16-7.2-16-16V208zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H512c-8.8 0-16-7.2-16-16V336zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H336V144c0-8.8-7.2-16-16-16z"/>
-      
+      <path d="M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96H48C21.5 96 0 117.5 0 144V464c0 26.5 21.5 48 48 48H592c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H473.7L337.8 5.4zM256 416c0-35.3 28.7-64 64-64s64 28.7 64 64v96H256V416zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V208c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H512c-8.8 0-16-7.2-16-16V208zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H512c-8.8 0-16-7.2-16-16V336zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H336V144c0-8.8-7.2-16-16-16z" />
     </svg>
-
   );
   const BuilderSVG = (
     <svg
@@ -93,10 +129,23 @@ function Home() {
       <path d="M308.5 135.3c7.1-6.3 9.9-16.2 6.2-25c-2.3-5.3-4.8-10.5-7.6-15.5L304 89.4c-3-5-6.3-9.9-9.8-14.6c-5.7-7.6-15.7-10.1-24.7-7.1l-28.2 9.3c-10.7-8.8-23-16-36.2-20.9L199 27.1c-1.9-9.3-9.1-16.7-18.5-17.8C173.9 8.4 167.2 8 160.4 8h-.7c-6.8 0-13.5 .4-20.1 1.2c-9.4 1.1-16.6 8.6-18.5 17.8L115 56.1c-13.3 5-25.5 12.1-36.2 20.9L50.5 67.8c-9-3-19-.5-24.7 7.1c-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6c-3.7 8.7-.9 18.6 6.2 25l22.2 19.8C32.6 161.9 32 168.9 32 176s.6 14.1 1.7 20.9L11.5 216.7c-7.1 6.3-9.9 16.2-6.2 25c2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6c5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8c6.7 .8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1c3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5c3.7-8.7 .9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM112 176a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM504.7 500.5c6.3 7.1 16.2 9.9 25 6.2c5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8c7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2l29.1-6.1c9.3-1.9 16.7-9.1 17.8-18.5c.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5L583.9 307c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7c-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6c-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1 .6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2c-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9c-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2L315.1 313c-9.3 1.9-16.7 9.1-17.8 18.5c-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7c4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6c8.7 3.7 18.6 .9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM464 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
     </svg>
   );
+  const OthersSVG = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      stroke="currentColor"
+      fill="#4987f8"
+      strokeWidth={0}
+      viewBox="0 0 640 512"
+      height={34}
+      width={34}
+    >
+      <path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+    </svg>
+  );
+
   return (
     <div className="mt-32">
-      <SearchBar />
-
+      <SearchBar data={profiles} />
       <main class="w-full p-2 md:p-4 pt-16 my-6 md:my-8 overflow-hidden md:mb-0">
         <div className="mx-auto max-w-[1200px] mt-2 md:mt-2 z-10">
           <ul className="grid grid-cols-4  gap-3 md:flex justify-between mx-auto max-w-xs md:max-w-2xl px-2">
@@ -142,8 +191,16 @@ function Home() {
                 name="Mécanique"
               />
             </li>
+            <li>
+              <HomeServices
+                nav={"/SearchByCategoryall"}
+                name="Autres"
+                svg={OthersSVG}
+              />
+            </li>
           </ul>
         </div>
+
         <div className="w-full max-w-9xl my-16 md:mx-6 lg:mx-10 xl:mx-auto relative flex">
           <div className="w-full h-full flex flex-col lg:flex-row gap-6 overflow-x-hidden">
             <div className="overflow-x-hidden h-full w-full mt-auto mb-0">
@@ -167,46 +224,6 @@ function Home() {
               </div>
               <div>
                 <div className="hidden absolute right-0 translate-x-1/2 -translate-y-1/2 z-20 lg:flex flex-col gap-2">
-                  <button
-                    type="button"
-                    className="bg-primary text-white p-2.5 rounded-full shadow-lg  hover:shadow-primary/50 transition-shadow"
-                  >
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth={0}
-                      viewBox="0 0 20 20"
-                      height={26}
-                      width={26}
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    className=" shadow-md shadow-neutral-300 bg-white transition-colors text-neutral-500 p-1 mx-auto z-[1] rounded-full"
-                  >
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth={0}
-                      viewBox="0 0 20 20"
-                      height={26}
-                      width={26}
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
                 </div>
                 {/* card a la une */}
                 <div className>
@@ -214,29 +231,23 @@ function Home() {
                     className="h-1 w-full bg-primary origin-left transition-transform ease-linear"
                     style={{ transform: "scaleX(0%)" }}
                   />
-                  <div className="mx-0 h-full w-full scrollbar-none overflow-x-auto scroll-ml-px pl-px scroll-smooth snap-x snap-mandatory">
-                    <ul className="h-full flex gap-4 pt-4">
-                      {/* chaque card dans un li */}
-                      <li>
-                        <Card
-                          value="40"
-                          name="mohamed"
-                          category="Plombier"
-                          Location="Tunis"
-                          Timestamp="40 minutes"
-                        />
-                      </li>
-                      <li>
-                        <Card />
-                      </li>
-                      <li>
-                        <Card />
-                      </li>
-                      <li>
-                        <Card />
-                      </li>
-                    </ul>
-                  </div>
+                  <Carousel
+                    autoPlay={false}
+                    autoPlaySpeed={5000}
+                    responsive={responsive}
+                    infinite={true}
+                    draggable={true}
+                  >
+                    {profiles.profiles.map((profile) => (
+                      <Card
+                        imagesrc={profile.profilePhoto.url}
+                        value={profile.price}
+                        name={profile.user.name}
+                        category={profile.category}
+                        Location={profile.city}
+                      />
+                    ))}
+                  </Carousel>
                 </div>
               </div>
             </div>
@@ -246,37 +257,43 @@ function Home() {
           ColorCard={ColorCard1}
           title="Transport"
           alt="Transport"
-          img={img}
+          img={clothes}
+          data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard2}
           title="Bien-être"
           alt="Bien-être"
-          img={img}
+          img={BienEtreIMG}
+          data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard3}
           title="Habillement"
           alt="Habillement"
-          img={img}
+          img={clothes}
+          data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard4}
           title="Leçons"
           alt="Leçons"
-          img={img}
+          img={LeconsIMG}
+          data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard5}
           title="Maison"
           alt="Maison"
-          img={img}
+          img={HomeIMG}
+          data={profiles}
         />
         <ListSubCategory
+          data={profiles}
           ColorCard={ColorCard6}
           title="Mécanique"
           alt="Mécanique"
-          img={img}
+          img={clothes}
         />
         <AllAnnouncements />
       </main>
