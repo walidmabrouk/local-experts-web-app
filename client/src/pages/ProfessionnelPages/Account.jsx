@@ -6,22 +6,26 @@ import SimpleMap from "../../components/SimpleMap";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteProfile, GetProfile, GetProfiles } from "../../redux/actions/profileActions";
 import AVATARIMG from "../../assets/media/User-avatar.svg.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchPosts } from "../../redux/actions/postActions";
 import { Logout } from "../../redux/actions/authActions";
 function Account() {
+  const {id} = useParams();
   const dispatch = useDispatch();
-  
+  console.log(id)
   useEffect(async () => {
     await dispatch(await GetProfile());
     await dispatch(await GetProfiles());
     await dispatch(await fetchPosts());
   }, []);
-  const profile = useSelector((state) => state.profiles.profile);
+ 
+  const userProfile = useSelector((state) => state.profiles.profile);
+  const profile = useSelector((state) =>
+    state.profiles.profiles.filter( (profile) => id === profile._id)
+  )[0];
   const posts = useSelector((state) => state.posts.posts);
   const profilePosts = posts?.filter((post) => post.user._id === profile.user._id)
   const SlicedProfilePosts = profilePosts.slice(0,2)
-  console.log(profilePosts);
   const deleteProfileHandle = () => {
     dispatch(DeleteProfile(profile._id) )
     dispatch( Logout() )

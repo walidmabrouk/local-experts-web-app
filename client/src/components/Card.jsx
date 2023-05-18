@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Card(props) {
+  console.log(props)
+  
   return (
     <div className="snap-start scroll-ml-px">
       <article>
-        <a href="/fr/item/640056958575ab54182d6a5b/">
-          <div className="relative rounded-md group w-[210px] h-[350px] lg:hover:-translate-y-3 transition-all lg:cursor-pointer">
+  <Link
+                 
+                    to={`/profile/${props.id}`}
+                  >          <div className="relative rounded-md group w-[210px] h-[350px] lg:hover:-translate-y-3 transition-all lg:cursor-pointer">
             <div className="flex flex-col w-full h-full rounded-md border overflow-hidden bg-neutral-100 pb-2  transition-all  border-neutral-100 undefined">
               <div className="absolute top-0 left-0 z-10 w-full pb-16 overflow-hidden">
                 <div className="absolute rounded-tr-lg rounded-r-lg inset-0 bg-gradient-to-b from-black/40 to-black/0 z-[-1] rounded-lg m-px"></div>
@@ -86,7 +91,7 @@ function Card(props) {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </article>
     </div>
   );

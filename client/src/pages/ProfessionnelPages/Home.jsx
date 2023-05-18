@@ -240,6 +240,7 @@ const responsive = {
                   >
                     {profiles.profiles.map((profile) => (
                       <Card
+                        id={profile._id}
                         imagesrc={profile.profilePhoto.url}
                         value={profile.price}
                         name={profile.user.name}

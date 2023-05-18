@@ -163,7 +163,7 @@ function App() {
             }
           />
           <Route
-            path="/account"
+            path="/profile/:id"
             element={
               <PrivateRouter user={user}>
                 <Account />

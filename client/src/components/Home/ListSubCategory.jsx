@@ -71,6 +71,7 @@ function ListSubCategory(props) {
                 {props.data.profiles.map((profile) =>
                   profile.category === props.title ? (
                     <Card
+                      id={profile._id}
                       imagesrc={profile.profilePhoto.url}
                       value={profile.price}
                       name={profile.user.name}
@@ -80,8 +81,6 @@ function ListSubCategory(props) {
                   ) : null
                 )}
               </Carousel>
-
-       
             </div>
           </div>
         </div>

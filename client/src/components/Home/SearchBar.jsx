@@ -73,7 +73,7 @@ function SearchBar({ data }) {
                 <section class="sec py-2">
                   <Link
                     className="dataItem flex gap-2 md:flex items-center px-6  "
-                    to={"/SearchPage"}
+                    to={`/profile/${value._id}`}
                   >
                     <svg
                       stroke="currentColor"
