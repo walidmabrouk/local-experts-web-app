@@ -164,7 +164,7 @@ function Header({ user, socket }) {
                         />
                       </svg>
                     </Dropdown>
-                    <Link to={user ? "/account" : "/login"}>
+                    <Link to={user ? `/profile/${profile._id}` : "/login"}>
                       <div className="flex  gap-2 bg-gray-500  rounded-full border border-gray-500 overflow-hidden">
                         {!profile.profilePhoto ? (
                           <svg

@@ -163,6 +163,14 @@ function App() {
             }
           />
           <Route
+            path="/SearchPage"
+            element={
+              <PrivateRouter user={user}>
+                <SearchPage />
+              </PrivateRouter>
+            }
+          />
+          <Route
             path="/profile/:id"
             element={
               <PrivateRouter user={user}>

@@ -35,8 +35,6 @@ const [listName, setListName] = useState(category.category || "");
     }
 };
 
-
-// ...
   const [isFirstDispatch, setIsFirstDispatch] = useState(true);
 
 useEffect(() => {
@@ -57,7 +55,6 @@ useEffect(() => {
   const profiles = useSelector((state) => state.profiles);
   const categories = useSelector((state) => state.categories.categories);
   const subCategories = useSelector((state) => state.categories.subCategories);
-console.log(subCategories)
   const onResetHandler = async () => {
        setCitySelected("")
        setListName("");
@@ -87,7 +84,6 @@ console.log(subCategories)
   const filteredSubCategories = subCategories?.filter((subCategory) => {
     return listName === subCategory.category.title;
   });
-console.log(filteredSubCategories)
 
 
   return (
