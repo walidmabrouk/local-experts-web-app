@@ -27,6 +27,8 @@ const {
   FindAllProfileBienetre,
   profilePhotoUploadCtrl,
 } = require("../controllers/profile.controllers");
+const subcategorieController = require("../controllers/subcategories.controllers");
+
 const photoUpload = require("../middlewares/photoUpload");
 const { createPostCtrl, getAllPostsCtrl, getSinglePostCtrl, getPostCountCtrl, deletePostCtrl, updatePostCtrl, updatePostImageCtrl, toggleLikeCtrl } = require("../controllers/posts.controllers");
 const { createCommentCtrl, getAllCommentsCtrl, deleteCommentCtrl, updateCommentCtrl } = require("../controllers/comments.controller");
@@ -195,7 +197,24 @@ router
     passport.authenticate("jwt", { session: false }),
     inRole(ROLES.ADMIN),
     deleteCategoryCtrl
-  );
+);
+  
+
+
+// Créer une nouvelle sous-catégorie
+router.post("/subcategories/", subcategorieController.createSubcategorie);
+
+// Récupérer toutes les sous-catégories
+router.get(
+  "/subcategories/:categoryId",
+  subcategorieController.getSubcategoriesByCategory
+);
+router.get("/subcategories/", subcategorieController.getSubcategories);
+// Mettre à jour une sous-catégorie
+router.put("/subcategories/:id", subcategorieController.updateSubcategorie);
+
+// Supprimer une sous-catégorie
+router.delete("/subcategories/:id", subcategorieController.deleteSubcategorie);
 
 
 module.exports = router;

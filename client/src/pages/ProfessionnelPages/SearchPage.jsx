@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DownBar from "../../components/SearchPage/DownBar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProfile, GetProfiles, searchAction } from "../../redux/actions/profileActions";
 import SelectedInput from "../../components/SearchPage/SelectedInput";
 import datas from "../../state-municipality.json";
 import Card from "../../components/Card";
+import { useParams } from "react-router-dom";
+import { fetchCategories, fetchSubCategories } from "../../redux/actions/categoryActions";
 
 function SearchPage() {
   const dispatch = useDispatch();
+    const  category  = useParams();
+
       const [params, setParams] = useState({});
-      const [listName, setListName] = useState("");
-      const [citySelected, setCitySelected] = useState("");
+const [listName, setListName] = useState(category.category || "");
+  const [citySelected, setCitySelected] = useState("");
+  console.log(category);
 
   const handleInputChange = (e) => {
   if (e.target.value) {
@@ -30,11 +35,29 @@ function SearchPage() {
     }
 };
 
-      useEffect(async () => {
-        await dispatch(await GetProfiles(params));
-      }, [params]);
-  const profiles = useSelector((state) => state.profiles);
 
+// ...
+  const [isFirstDispatch, setIsFirstDispatch] = useState(true);
+
+useEffect(() => {
+       dispatch(fetchCategories());
+       dispatch(fetchSubCategories());
+  const fetchData = async () => {
+    if (isFirstDispatch) {
+      await dispatch( GetProfiles(category));
+      setIsFirstDispatch(false);
+    } else {
+      await dispatch( GetProfiles(params));
+    }
+  };
+
+  fetchData();
+}, [category, params]);
+
+  const profiles = useSelector((state) => state.profiles);
+  const categories = useSelector((state) => state.categories.categories);
+  const subCategories = useSelector((state) => state.categories.subCategories);
+console.log(subCategories)
   const onResetHandler = async () => {
        setCitySelected("")
        setListName("");
@@ -59,6 +82,13 @@ function SearchPage() {
   }
   const DelegationArray = getDelegationNames(citySelected, datas)
   
+
+
+  const filteredSubCategories = subCategories?.filter((subCategory) => {
+    return listName === subCategory.category.title;
+  });
+console.log(filteredSubCategories)
+
 
   return (
     <div>
@@ -416,16 +446,56 @@ function SearchPage() {
                                     className="select pl-11 pt-3 w-full rounded-md focus:outline-none bg-gray-200/70 text-xs  font-bold "
                                   >
                                     <option selected />
-                                    <option value="Transport">Transport</option>
-                                    <option value="Habillement">
-                                      Habillement
-                                    </option>
+                                    {categories.map((category) => (
+                                      <option value={category.title}>
+                                        {category.title}
+                                      </option>
+                                    ))}
                                   </select>
                                 </div>
-                                <SelectedInput
-                                  name="sub-categorie"
-                                  d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                                />
+                                <div className="relative w-full">
+                                  <div className="absolute inset-0 flex gap-2 pl-[1.1rem] pointer-events-none items-center">
+                                    <span className="flex text-gray-600">
+                                      <svg
+                                        stroke="currentColor"
+                                        fill="currentColor"
+                                        strokeWidth={0}
+                                        viewBox="0 0 20 20"
+                                        height={20}
+                                        width={20}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fillRule="evenodd"
+                                          d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                          clipRule="evenodd"
+                                        />
+                                      </svg>
+                                    </span>
+                                    <span>
+                                      <p className="text-gray-600 transition-all transfrom -translate-y-2 text-3xs">
+                                        sub-categorie
+                                      </p>
+                                    </span>
+                                  </div>
+                                  <select
+                                    name="sub-categorie"
+                                    className="select pl-11 pt-3 w-full rounded-md focus:outline-none bg-gray-200/70 text-xs  font-bold "
+                                  >
+                                    <option selected />
+
+                                    {filteredSubCategories?.map(
+                                      (subCategory) => (
+                                        <option
+                                          key={subCategory.name}
+                                          value={subCategory.name}
+                                        >
+                                          {subCategory.name}
+                                        </option>
+                                      )
+                                    )}
+                                  </select>
+                                </div>
                               </div>
                             </div>
                           </div>

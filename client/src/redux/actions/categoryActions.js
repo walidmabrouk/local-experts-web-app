@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ERRORS, SET_CATEGORIES } from "../types";
+import { ERRORS, SET_CATEGORIES, SET_SUB_CATEGORIES } from "../types";
 
 export const fetchCategories = () => (dispatch) => {
   axios
@@ -7,6 +7,22 @@ export const fetchCategories = () => (dispatch) => {
     .then((res) => {
       dispatch({
         type: SET_CATEGORIES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+export const fetchSubCategories = () => (dispatch) => {
+  axios
+    .get("/api/subcategories/")
+    .then((res) => {
+      dispatch({
+        type: SET_SUB_CATEGORIES,
         payload: res.data,
       });
     })

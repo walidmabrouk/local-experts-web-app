@@ -3,6 +3,7 @@ import {
   SET_CATEGORIES,
   SET_POST,
   SET_POSTS,
+  SET_SUB_CATEGORIES,
 
 } from "../types";
 
@@ -16,6 +17,11 @@ export default function categoryReducer(state = initialState, action) {
         ...state,
         categories: action.payload,
       };
+    case SET_SUB_CATEGORIES:
+      return {
+        ...state,
+        subCategories: action.payload,
+      };
     case SET_POST:
       return {
         ...state,
@@ -26,8 +32,6 @@ export default function categoryReducer(state = initialState, action) {
         ...state,
         posts: state.posts.filter((p) => p._id !== action.payload),
       };
-
-
 
     default:
       return state;

@@ -5,9 +5,12 @@ import Card from "../../components/Card";
 import ListSubCategory from "../../components/Home/ListSubCategory";
 import AllAnnouncements from "../../components/Home/AllAnnouncements";
 import HomeIMG from "../../assets/media/Home.png";
+import MacaniqueIMG from "../../assets/media/mecanique.png";
+import TransportIMG from "../../assets/media/transport.png";
 import LeconsIMG from "../../assets/media/image__3_-removebg-preview.png";
 import clothes from "../../assets/media/plumber.jpg";
-import BienEtreIMG from "../../assets/media/image__5_-removebg-preview.png";
+import BienEtreIMG from "../../assets/media/sante.png";
+import CommerceIMG from "../../assets/media/chariot.png";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProfile, GetProfiles } from "../../redux/actions/profileActions";
 import Carousel from "react-multi-carousel";
@@ -77,7 +80,7 @@ const responsive = {
       <path d="M232 0c-39.8 0-72 32.2-72 72v8H72C32.2 80 0 112.2 0 152V440c0 39.8 32.2 72 72 72h.2 .2 .2 .2 .2H73h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2H75h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2H77h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2H79h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2H82h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2H85h.2 .2 .2 .2H86h.2 .2 .2 .2H87h.2 .2 .2 .2H88h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2H98h.2 .2 .2 .2H99h.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2v0H456h8v0H568c39.8 0 72-32.2 72-72V152c0-39.8-32.2-72-72-72H480V72c0-39.8-32.2-72-72-72H232zM480 128h88c13.3 0 24 10.7 24 24v40H536c-13.3 0-24 10.7-24 24s10.7 24 24 24h56v48H536c-13.3 0-24 10.7-24 24s10.7 24 24 24h56V440c0 13.3-10.7 24-24 24H480V336 128zM72 128h88V464h-.1-.2-.2-.2H159h-.2-.2-.2H158h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H154h-.2-.2-.2H153h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H150h-.2-.2-.2H149h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H146h-.2-.2-.2H145h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H142h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H139h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H136h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H133h-.2-.2-.2-.2-.2-.2-.2-.2H131h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H128h-.2-.2-.2-.2-.2-.2-.2-.2H126h-.2-.2-.2-.2-.2-.2-.2-.2H124h-.2-.2-.2-.2-.2-.2-.2-.2H122h-.2-.2-.2-.2-.2-.2-.2-.2H120h-.2-.2-.2-.2-.2-.2-.2-.2H118h-.2-.2-.2-.2-.2-.2-.2-.2H116h-.2-.2-.2-.2-.2-.2-.2-.2H114h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H111h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H108h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H105h-.2-.2-.2-.2H104h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H100h-.2-.2-.2-.2H99h-.2-.2-.2-.2H98h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H88h-.2-.2-.2-.2H87h-.2-.2-.2-.2H86h-.2-.2-.2-.2H85h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H82h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H79h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H77h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H75h-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2H73h-.2-.2-.2-.2-.2H72c-13.2 0-24-10.7-24-24V336h56c13.3 0 24-10.7 24-24s-10.7-24-24-24H48V240h56c13.3 0 24-10.7 24-24s-10.7-24-24-24H48V152c0-13.3 10.7-24 24-24zM208 72c0-13.3 10.7-24 24-24H408c13.3 0 24 10.7 24 24V336 464H368V400c0-26.5-21.5-48-48-48s-48 21.5-48 48v64H208V72zm88 24v24H272c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h24v24c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V168h24c8.8 0 16-7.2 16-16V136c0-8.8-7.2-16-16-16H344V96c0-8.8-7.2-16-16-16H312c-8.8 0-16 7.2-16 16z" />
     </svg>
   );
-  const ClothingSVG = (
+  const CommerceSVG = (
     <svg
       stroke="currentColor"
       fill="#4987f8"
@@ -87,7 +90,7 @@ const responsive = {
       width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z" />
+      <path  d="M64 0C46.3 0 32 14.3 32 32V96c0 17.7 14.3 32 32 32h80v32H87c-31.6 0-58.5 23.1-63.3 54.4L1.1 364.1C.4 368.8 0 373.6 0 378.4V448c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V378.4c0-4.8-.4-9.6-1.1-14.4L488.2 214.4C483.5 183.1 456.6 160 425 160H208V128h80c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H64zM96 48H256c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zM64 432c0-8.8 7.2-16 16-16H432c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16zm48-168a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm120-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM160 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM328 240a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM256 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM424 240a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM352 344a24 24 0 1 1 0-48 24 24 0 1 1 0 48z" />
     </svg>
   );
   const SchoolSVG = (
@@ -154,47 +157,54 @@ const responsive = {
                 nav={"/SearchByCategoryTransport"}
                 svg={Icon}
                 name="Transport"
+                value="Transport"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryBienetre"}
                 svg={HospitalSVG}
-                name="Bien-être"
+                name="Santé"
+                value="Santé"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryHabillement"}
-                svg={ClothingSVG}
-                name="Habillement"
+                svg={CommerceSVG}
+                name="Commerce"
+                value="Commerce"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryLeçons"}
                 svg={SchoolSVG}
-                name="Leçons"
+                name="Éducation"
+                value="Éducation"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryMaison"}
                 svg={BuilderSVG}
-                name="Maison"
+                name="Bâtiment"
+                value="Bâtiment"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryMécanique"}
                 svg={MechanicSVG}
-                name="Mécanique"
+                name="Automobile"
+                value="Automobile"
               />
             </li>
             <li>
               <HomeServices
                 nav={"/SearchByCategoryall"}
                 name="Autres"
+                value="Autres"
                 svg={OthersSVG}
               />
             </li>
@@ -223,8 +233,7 @@ const responsive = {
                 </h3>
               </div>
               <div>
-                <div className="hidden absolute right-0 translate-x-1/2 -translate-y-1/2 z-20 lg:flex flex-col gap-2">
-                </div>
+                <div className="hidden absolute right-0 translate-x-1/2 -translate-y-1/2 z-20 lg:flex flex-col gap-2"></div>
                 {/* card a la une */}
                 <div className>
                   <div
@@ -258,43 +267,43 @@ const responsive = {
           ColorCard={ColorCard1}
           title="Transport"
           alt="Transport"
-          img={clothes}
+          img={TransportIMG}
           data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard2}
-          title="Bien-être"
-          alt="Bien-être"
+          title="Santé"
+          alt="Santé"
           img={BienEtreIMG}
           data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard3}
-          title="Habillement"
-          alt="Habillement"
-          img={clothes}
+          title="Commerce"
+          alt="Commerce"
+          img={CommerceIMG}
           data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard4}
-          title="Leçons"
-          alt="Leçons"
+          title="Éducation"
+          alt="Éducation"
           img={LeconsIMG}
           data={profiles}
         />
         <ListSubCategory
           ColorCard={ColorCard5}
-          title="Maison"
-          alt="Maison"
+          title="Bâtiment"
+          alt="Bâtiment"
           img={HomeIMG}
           data={profiles}
         />
         <ListSubCategory
           data={profiles}
           ColorCard={ColorCard6}
-          title="Mécanique"
-          alt="Mécanique"
-          img={clothes}
+          title="Automobile"
+          alt="Automobile"
+          img={MacaniqueIMG}
         />
         <AllAnnouncements />
       </main>

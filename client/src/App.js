@@ -155,7 +155,7 @@ function App() {
             }
           />
           <Route
-            path="/SearchPage"
+            path="/SearchPage/:category"
             element={
               <PrivateRouter user={user}>
                 <SearchPage />
