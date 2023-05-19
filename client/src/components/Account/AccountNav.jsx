@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 function AccountNav() {
-        const { pathname } = useLocation();
-        let subpage = pathname.split("/")?.[2];
+const {id} = useParams()
+  const { pathname } = useLocation();
+  let subpage = pathname.split("/")?.[3];
+  console.log(subpage);
         if (subpage === undefined) {
           subpage = "profile";
         }
@@ -17,8 +19,11 @@ function AccountNav() {
           return classes;
         }
   return (
-    <nav className="w-full flex justify-center mt-16 gap-2 mb-8">
-      <Link className={linkClasses("profile")} to={"/account"}>
+    <nav
+      className="w-full flex justify-center  gap-2 mb-8"
+      style={{ marginTop: "4%" }}
+    >
+      <Link className={linkClasses("profile")} to={`/profile/${id}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -35,7 +40,7 @@ function AccountNav() {
         </svg>
         Mon Profile
       </Link>
-      <Link className={linkClasses("bookings")} to={"/account/bookings"}>
+      <Link className={linkClasses("bookings")} to={`/profile/${id}/bookings`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -52,7 +57,10 @@ function AccountNav() {
         </svg>
         Réservation
       </Link>
-      <Link className={linkClasses("favorites")} to={"/account/favorites"}>
+      <Link
+        className={linkClasses("Favorites")}
+        to={`/profile/${id}/Favorites`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

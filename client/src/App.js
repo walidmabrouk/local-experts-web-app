@@ -35,6 +35,7 @@ import { Navigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import NotificationPage from "./pages/ProfessionnelPages/NotificationPage";
+import FavoritePage from "./pages/ProfessionnelPages/FavoritePage";
 
 
 if (window.localStorage.jwt) {
@@ -115,7 +116,7 @@ function App() {
             }
           />
           <Route
-            path="/posts"
+            path="/Posts"
             element={
               <PrivateRouter user={user}>
                 <Posts socket={socket} user={user} />
@@ -170,11 +171,39 @@ function App() {
               </PrivateRouter>
             }
           />
+          <Route path="/profile/:id">
+            <Route
+              index
+              element={
+                <PrivateRouter user={user}>
+                  <Account />
+                </PrivateRouter>
+              }
+            />
+
+            <Route
+              path="bookings"
+              element={
+                <PrivateRouter user={user}>
+                  <BookingPage />
+                </PrivateRouter>
+              }
+            />
+            <Route
+              path="Favorites"
+              element={
+                <PrivateRouter user={user}>
+                  <FavoritePage />
+                </PrivateRouter>
+              }
+            />
+          </Route>
+
           <Route
-            path="/profile/:id"
+            path="/profile/bookings/:id"
             element={
               <PrivateRouter user={user}>
-                <Account />
+                <BookingPage />
               </PrivateRouter>
             }
           />

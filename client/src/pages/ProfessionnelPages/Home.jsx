@@ -16,6 +16,8 @@ import { GetProfile, GetProfiles } from "../../redux/actions/profileActions";
 import Carousel from "react-multi-carousel";
 import { fetchPosts } from "../../redux/actions/postActions";
 import { ToastContainer } from "react-toastify";
+import AccountNav from "../../components/Account/AccountNav";
+import HomeNav from "../../components/Home/HomeNav";
 
 function Home() {
   const dispatch = useDispatch();
@@ -147,7 +149,8 @@ const responsive = {
   );
 
   return (
-    <div className="mt-32">
+    <div >
+      <HomeNav />
       <SearchBar data={profiles} />
       <main class="w-full p-2 md:p-4 pt-16 my-6 md:my-8 overflow-hidden md:mb-0">
         <div className="mx-auto max-w-[1200px] mt-2 md:mt-2 z-10">

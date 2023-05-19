@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import HomeNav from '../Home/HomeNav';
+import CreatePost from '../../pages/ProfessionnelPages/CreatePost';
 
 function PostsList({ posts }) {
   const { loading, isPostCreated } = useSelector(
@@ -9,6 +11,7 @@ function PostsList({ posts }) {
 
   return (
     <div className=" pl-32 md:pl-32 pr-6 lg:pl-6 post-item">
+      <CreatePost/>
       {posts.map((post) => (
         <div>
           <div className="post-item-image-wrapper">

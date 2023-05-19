@@ -34,7 +34,7 @@ function ListSubCategory(props) {
         <div className="flex justify-center lg:justify-end ">
           <Link
             className="flex items-center gap-3 afficher rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow text-white text-sm font-bold pl-3 mt-auto mb-2 h-8"
-            to="/"
+            to={`/SearchPage/${props.title}`}
           >
             Afficher tout
             <svg

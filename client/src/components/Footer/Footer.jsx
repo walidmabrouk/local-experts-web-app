@@ -4,7 +4,14 @@ import { useLocation } from "react-router-dom";
 function Footer() {
     const { pathname } = useLocation();
   // you can check a more conditions here
-  if (pathname === "/SearchPage") return null;
+if (pathname.startsWith("/SearchPage"  )) {
+  return null;
+  }
+if (pathname === "/Posts") {
+  return null;
+  }
+
+
   return (
     <div>
       <div className="min-h-[200px] w-full bg-gray-100 py-8 mt-2  ">
