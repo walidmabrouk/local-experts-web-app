@@ -16,7 +16,6 @@ function Header({ user, socket }) {
       setNotifications((prev) => [...prev, data]);
     });
   }, [socket]);
-  console.log(notifications);
   const profile = useSelector((state) => state.profiles.profile);
   const LogoutHanlder = () => {
     dispatch(Logout());

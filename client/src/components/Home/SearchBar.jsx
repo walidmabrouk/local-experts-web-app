@@ -25,7 +25,10 @@ function SearchBar({ data }) {
     setWordEntered("");
   };
   return (
-    <div className="w-1/2  relative mx-auto transition-all outline-4 outline-offset-2 outline-neutral-400  lg:max-w-2xl max-w-[calc(100%_-_16px)]">
+    <div
+      style={{ "margin-top": "6%" }}
+      className="w-1/2  relative mx-auto transition-all outline-4 outline-offset-2 outline-neutral-400  lg:max-w-2xl max-w-[calc(100%_-_16px)]"
+    >
       <div>
         <input
           type="text"

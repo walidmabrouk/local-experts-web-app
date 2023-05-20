@@ -36,6 +36,7 @@ import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import NotificationPage from "./pages/ProfessionnelPages/NotificationPage";
 import FavoritePage from "./pages/ProfessionnelPages/FavoritePage";
+import Test from "./pages/Test";
 
 
 if (window.localStorage.jwt) {
@@ -244,6 +245,14 @@ function App() {
             element={
               <PrivateRouter user={user}>
                 <BookingPage />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/test"
+            element={
+              <PrivateRouter user={user}>
+                <Test />
               </PrivateRouter>
             }
           />

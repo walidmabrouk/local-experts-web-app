@@ -18,15 +18,12 @@ function Posts({socket , user}) {
   const posts = useSelector((state) => state.posts.posts);
   return (
     <div>
-      <div>
-        <HomeNav />
-      </div>
+      <HomeNav />
       <div className="grid grid-cols-12 gap-x-2 pr-12 md:pr-16">
         <div
           className="nav-header pl-32 md:pl-32 pr-6 lg:pl-6"
           style={{ "grid-column": "span 3/span 3" }}
-        >
-        </div>
+        ></div>
         <PostsList posts={posts} />
         <NavCategory />
       </div>

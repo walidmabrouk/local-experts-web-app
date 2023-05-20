@@ -9,7 +9,6 @@ function HomeNav() {
   } else if (subpage ===  "Posts") {
     subpage = "Fils d'accueil";
   }
-  console.log(subpage);
   function linkClasses(type = null) {
     let classes = "inline-flex gap-1 py-2 px-6 rounded-full";
     if (type === subpage) {
@@ -20,8 +19,12 @@ function HomeNav() {
     return classes;
   }
   return (
-    <nav className="w-full flex justify-center gap-2 mb-8" style={{"marginTop" : "4%"}}>
-      <Link className={linkClasses("Profils")} to={`/`}>
+    <nav className="w-full flex justify-center gap-2 mb-8 Home-nav">
+      <Link
+        className={linkClasses("Profils")}
+        to={`/`}
+        style={{ height: "40px" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,7 +41,11 @@ function HomeNav() {
         </svg>
         Profils
       </Link>
-      <Link className={linkClasses("Fils d'accueil")} to={`/Posts`}>
+      <Link
+        className={linkClasses("Fils d'accueil")}
+        to={`/Posts`}
+        style={{ height: "40px" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

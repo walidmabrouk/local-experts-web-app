@@ -13,7 +13,6 @@ const postSchema = new mongoose.Schema(
     
     title: {
       type: String,
-      required: true,
       trim: true,
       minlength: 2,
       maxlength: 200,
@@ -34,7 +33,6 @@ const postSchema = new mongoose.Schema(
     ],
     category: {
       type: String,
-      required: true,
     },
     description: {
       type: String,

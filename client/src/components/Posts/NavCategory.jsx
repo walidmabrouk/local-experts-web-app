@@ -10,7 +10,6 @@ function NavCategory() {
     }, []);
 
   const categories = useSelector((state) => state.categories.categories);
-  console.log(categories);
   return (
     <div
       className="nav-header pl-32 md:pl-32 pr-6 lg:pl-6"
