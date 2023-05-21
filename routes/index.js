@@ -33,6 +33,7 @@ const photoUpload = require("../middlewares/photoUpload");
 const { createPostCtrl, getAllPostsCtrl, getSinglePostCtrl, getPostCountCtrl, deletePostCtrl, updatePostCtrl, updatePostImageCtrl, toggleLikeCtrl } = require("../controllers/posts.controllers");
 const { createCommentCtrl, getAllCommentsCtrl, deleteCommentCtrl, updateCommentCtrl } = require("../controllers/comments.controller");
 const { createCategoryCtrl, getAllCategoriesCtrl, deleteCategoryCtrl } = require("../controllers/categories.controllers");
+const { createReservationCtrl, getReservationByProfessional, getAllReservationCtrl, updateReservationCtrl, deleteReservationCtrl } = require("../controllers/reservations.controllers");
 /* users routes. */
 router.post("/register", Register);
 router.post("/login", Login);
@@ -48,7 +49,7 @@ router.post(
 router.get(
   "/profiles",
   passport.authenticate("jwt", { session: false }),
-  inRole(ROLES.ADMIN),
+  
   FindAllProfiles
 );
 /* get one profiles */
@@ -215,6 +216,18 @@ router.put("/subcategories/:id", subcategorieController.updateSubcategorie);
 
 // Supprimer une sous-catégorie
 router.delete("/subcategories/:id", subcategorieController.deleteSubcategorie);
+
+
+
+
+
+// /api/reservations
+router
+  .route("/reservations")
+  .post(createReservationCtrl ).get(getAllReservationCtrl)
+router.route(`/reservations/:professionalId`).get(getReservationByProfessional);
+router.route(`/reservations/:reservationId`).put(updateReservationCtrl).delete(deleteReservationCtrl);
+ 
 
 
 module.exports = router;

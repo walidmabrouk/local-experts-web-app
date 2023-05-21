@@ -29,7 +29,14 @@ const UserProfile = new Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+UserProfile.virtual("reservations", {
+  ref: "Reservation",
+  foreignField: "professionalId",
+  localField: "_id",
+});
 
 module.exports = mongoose.model("profiles", UserProfile);

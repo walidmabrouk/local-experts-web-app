@@ -159,7 +159,7 @@ const FindSingleProfile = async (req, res) => {
   try {
     const profile = await profileModel
       .findOne({ user: req.user.id })
-      .populate("user", ["name", "email", "role"]);
+      .populate("user", ["name", "email", "role"]).populate("reservations");
     res.status(200).json(profile);
   } catch (error) {
     res.status(404).json(error.message);
