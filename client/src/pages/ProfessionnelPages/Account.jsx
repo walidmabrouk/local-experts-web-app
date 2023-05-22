@@ -9,10 +9,11 @@ import AVATARIMG from "../../assets/media/User-avatar.svg.png";
 import { Link, useParams } from "react-router-dom";
 import { fetchPosts } from "../../redux/actions/postActions";
 import { Logout } from "../../redux/actions/authActions";
+import RatingStars from "../../components/Account/RatingStars";
+import axios from "axios";
 function Account() {
   const {id} = useParams();
   const dispatch = useDispatch();
-  console.log(id)
   useEffect(async () => {
     await dispatch(await GetProfile());
     await dispatch(await GetProfiles());
@@ -30,9 +31,22 @@ function Account() {
     dispatch(DeleteProfile(profile._id) )
     dispatch( Logout() )
   }
+
+  const [rating, setRating] = useState(0);
+
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
+
+  const handleSubmitRating = () => {
+    console.log(rating)
+     axios.put(`/api/professionals/${id}/rating`,  {rating} );
+  };
   return (
     <div className="h-fit w-full mt-72 lg:mt-32">
       <AccountNav />
+      <RatingStars initialValue={rating} onRatingChange={handleRatingChange} />
+      <button onClick={handleSubmitRating}>Soumettre la notation</button>
       <div className="div-img-profile">
         <Link to={"/"}>
           <img
@@ -516,10 +530,7 @@ function Account() {
             </div>
           </div>
         </div>
-        <div
-          className="text-right mt-8 mr-8 "
-          style={{ marginRight: "3%" }}
-        >
+        <div className="text-right mt-8 mr-8 " style={{ marginRight: "3%" }}>
           <button
             onClick={deleteProfileHandle}
             className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"

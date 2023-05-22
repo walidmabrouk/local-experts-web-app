@@ -18,14 +18,17 @@ const UserProfile = new Schema(
       default: {
         url: "",
         publicId: null,
-      }
+      },
     },
-    Localisation: Object ,
+    Localisation: Object,
     postalcode: "string",
     address: "string",
     price: Number,
     extraInfo: "string",
-    
+    rating: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
@@ -35,6 +38,11 @@ const UserProfile = new Schema(
 );
 UserProfile.virtual("reservations", {
   ref: "Reservation",
+  foreignField: "professionalId",
+  localField: "_id",
+});
+UserProfile.virtual("reviews", {
+  ref: "Review",
   foreignField: "professionalId",
   localField: "_id",
 });

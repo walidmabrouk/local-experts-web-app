@@ -69,7 +69,6 @@ function App() {
     name: auth.user.name,
     id: auth.user.name
   };
-  console.log(user.name)
     useEffect(() => {
       socket?.emit("newUser", user.name);
     }, [socket, user]);

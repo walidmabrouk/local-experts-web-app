@@ -26,6 +26,9 @@ const {
   FindAllProfileByMaison,
   FindAllProfileBienetre,
   profilePhotoUploadCtrl,
+  UpdatingRating,
+  updatingRating,
+  updatingRatingCtrl,
 } = require("../controllers/profile.controllers");
 const subcategorieController = require("../controllers/subcategories.controllers");
 
@@ -34,6 +37,7 @@ const { createPostCtrl, getAllPostsCtrl, getSinglePostCtrl, getPostCountCtrl, de
 const { createCommentCtrl, getAllCommentsCtrl, deleteCommentCtrl, updateCommentCtrl } = require("../controllers/comments.controller");
 const { createCategoryCtrl, getAllCategoriesCtrl, deleteCategoryCtrl } = require("../controllers/categories.controllers");
 const { createReservationCtrl, getReservationByProfessional, getAllReservationCtrl, updateReservationCtrl, deleteReservationCtrl } = require("../controllers/reservations.controllers");
+const { addReview, getProfessionalReviews } = require("../controllers/reviews.controllers");
 /* users routes. */
 router.post("/register", Register);
 router.post("/login", Login);
@@ -229,5 +233,14 @@ router.route(`/reservations/:professionalId`).get(getReservationByProfessional);
 router.route(`/reservations/:reservationId`).put(updateReservationCtrl).delete(deleteReservationCtrl);
  
 
+
+router.put("/professionals/:id/rating", updatingRatingCtrl);
+
+
+// Add a review
+router.post('/reviews', addReview);
+
+// Get all reviews for a professional
+router.get('/professionals/:professionalId/reviews',getProfessionalReviews);
 
 module.exports = router;

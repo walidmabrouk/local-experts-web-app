@@ -159,7 +159,12 @@ const FindSingleProfile = async (req, res) => {
   try {
     const profile = await profileModel
       .findOne({ user: req.user.id })
-      .populate("user", ["name", "email", "role"]).populate("reservations");
+      .populate("user", ["name", "email", "role"])
+      .populate("reservations")
+      .populate({
+        path: "reviews",
+        populate: { path: "clientId", select: "name" },
+      });
     res.status(200).json(profile);
   } catch (error) {
     res.status(404).json(error.message);
@@ -214,6 +219,31 @@ module.exports.deleteUserProfileCtrl = asyncHandler(async (req, res) => {
   // 8. Send a response to the client
   res.status(200).json({ message: "your profile has been deleted" });
 });
+
+
+const updatingRatingCtrl =( 
+  async (req, res) => {
+    const { id } = req.params;
+    const { rating } = req.body;
+
+    try {
+      // Mettre à jour la valeur de notation dans la base de données
+      const professionnel = await profileModel.findById(id);
+      professionnel.rating = rating;
+      await professionnel.save();
+
+      res
+        .status(200)
+        .json({ message: "La notation a été mise à jour avec succès." });
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la notation :", error);
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la mise à jour de la notation." });
+    }
+  }
+);
+
 
 
 
@@ -425,4 +455,5 @@ module.exports = {
   FindProfileByHabillement,
   FindProfileByTransport,
   profilePhotoUploadCtrl,
+  updatingRatingCtrl,
 };
