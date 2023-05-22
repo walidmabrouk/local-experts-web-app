@@ -164,7 +164,7 @@ const FindSingleProfile = async (req, res) => {
       .populate({
         path: "reviews",
         populate: { path: "clientId", select: "name" },
-      });
+      }).populate('favorites');
     res.status(200).json(profile);
   } catch (error) {
     res.status(404).json(error.message);
@@ -444,13 +444,13 @@ const addToFavorites = async (req, res) => {
 
   try {
     // Vérifier si le profil favori existe
-    const favoriteProfile = await Profile.findById(favoriteProfileId);
+    const favoriteProfile = await profileModel.findById(favoriteProfileId);
     if (!favoriteProfile) {
       return res.status(404).json({ message: "Le profil favori n'existe pas" });
     }
 
     // Ajouter le profil favori à la liste des favoris du profil
-    const profile = await Profile.findById(profileId);
+    const profile = await profileModel.findById(profileId);
     profile.favorites.push(favoriteProfile);
     await profile.save();
 

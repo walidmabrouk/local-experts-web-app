@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card(props) {
   
   return (
-    <div className="snap-start scroll-ml-px">
+    <div className="mr-4 snap-start scroll-ml-px">
       <article>
   <Link
                  

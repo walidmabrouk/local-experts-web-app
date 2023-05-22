@@ -10806,7 +10806,10 @@ color: rgb(15, 20, 25);
       display: flex;
     flex-flow: column;
 }
-  
+.favorie-box{
+padding: 10%;
+    padding-top: 3%;
+  }
 }
 
 
