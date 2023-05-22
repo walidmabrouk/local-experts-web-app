@@ -10053,10 +10053,8 @@ font-family: Averta,Helvetica,Arial,Verdana,sans-serif;
     text-transform: uppercase;
 }
 .testimonial-box-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: block;
+ 
     width:100%;
 }
 .testimonial-box{
@@ -10107,6 +10105,7 @@ font-family: Averta,Helvetica,Arial,Verdana,sans-serif;
 .client-comment p{
     font-size: 0.9rem;
     color: #4b4b4b;
+    padding-left: 1.5%;
 }
 .testimonial-box:hover{
     transform: translateY(-10px);
@@ -10768,8 +10767,46 @@ color: rgb(15, 20, 25);
 .rating > input:checked ~ label {
   color: #ffa723;
 }
+.profile-review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.profile-review .profile-img {
+  margin-right: 10px;
+}
 
+.profile-review .profile-img img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-review .name-user {
+  font-weight: bold;
+
+}
+
+.profile-review .reviews {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.profile-review .reviews svg {
+  width: 15px;
+  height: 15px;
+  margin-left: 2px;
+  fill: #ffa723;
+}
+.name-review-box{
+      display: flex;
+    flex-flow: column;
+}
+  
 }
 
 

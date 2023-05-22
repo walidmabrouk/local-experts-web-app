@@ -29,6 +29,8 @@ const {
   UpdatingRating,
   updatingRating,
   updatingRatingCtrl,
+  addToFavorites,
+  removeFromFavorites,
 } = require("../controllers/profile.controllers");
 const subcategorieController = require("../controllers/subcategories.controllers");
 
@@ -243,4 +245,14 @@ router.post('/reviews', addReview);
 // Get all reviews for a professional
 router.get('/professionals/:professionalId/reviews',getProfessionalReviews);
 
+
+
+router.post(
+  "/profiles/:profileId/favorites/:favoriteProfileId",
+  addToFavorites
+);
+router.delete(
+  "/profiles/:profileId/favorites/:favoriteProfileId",
+  removeFromFavorites
+);
 module.exports = router;

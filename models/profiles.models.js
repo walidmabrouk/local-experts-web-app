@@ -12,6 +12,12 @@ const UserProfile = new Schema(
     tel: "string",
     city: "string",
     rating: Number,
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "profiles",
+      },
+    ],
     bio: "string",
     profilePhoto: {
       type: Object,

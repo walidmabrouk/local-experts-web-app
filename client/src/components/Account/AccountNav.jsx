@@ -5,7 +5,6 @@ function AccountNav() {
 const {id} = useParams()
   const { pathname } = useLocation();
   let subpage = pathname.split("/")?.[3];
-  console.log(subpage);
         if (subpage === undefined) {
           subpage = "profile";
         }

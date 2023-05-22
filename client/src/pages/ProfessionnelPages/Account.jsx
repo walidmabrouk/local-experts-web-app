@@ -11,6 +11,7 @@ import { fetchPosts } from "../../redux/actions/postActions";
 import { Logout } from "../../redux/actions/authActions";
 import RatingStars from "../../components/Account/RatingStars";
 import axios from "axios";
+import ReviewBox from "../../components/Account/ReviewBox";
 function Account() {
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function Account() {
   }, []);
  
   const userProfile = useSelector((state) => state.profiles.profile);
+  const {profiles} = useSelector((state) => state.profiles);
   const profile = useSelector((state) =>
     state.profiles.profiles.filter( (profile) => id === profile._id)
   )[0];
@@ -39,7 +41,6 @@ function Account() {
   };
 
   const handleSubmitRating = () => {
-    console.log(rating)
      axios.put(`/api/professionals/${id}/rating`,  {rating} );
   };
   return (
@@ -267,127 +268,21 @@ function Account() {
               <h2 className="text-gray-700 font-medium text-xl mb-4">AVIS</h2>
             </section>
             <section id="testimonials">
-              <div class="testimonial-box-container block">
-                <div class="testimonial-box">
-                  <div class="box-top">
-                    <div class="profile-review">
-                      <div class="profile-img">
-                        <img src="images/c-1.jpg" />
-                      </div>
-                      <div class="name-user">
-                        <strong>Touseeq Ijaz</strong>
-                        <span>@touseeqijazweb</span>
-                      </div>
-                    </div>
-                    <div class="reviews">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 576 512"
-                      >
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="client-comment">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Exercitationem, quaerat quis? Provident temporibus
-                      architecto asperiores nobis maiores nisi a. Quae doloribus
-                      ipsum aliquam tenetur voluptates incidunt blanditiis sed
-                      atque cumque.
-                    </p>
-                  </div>
-                </div>{" "}
-                <div class="testimonial-box">
-                  <div class="box-top">
-                    <div class="profile-review">
-                      <div class="profile-img">
-                        <img src="images/c-1.jpg" />
-                      </div>
-                      <div class="name-user">
-                        <strong>Touseeq Ijaz</strong>
-                        <span>@touseeqijazweb</span>
-                      </div>
-                    </div>
-                    <div class="reviews">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 576 512"
-                      >
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="client-comment">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Exercitationem, quaerat quis? Provident temporibus
-                      architecto asperiores nobis maiores nisi a. Quae doloribus
-                      ipsum aliquam tenetur voluptates incidunt blanditiis sed
-                      atque cumque.
-                    </p>
-                  </div>
-                </div>{" "}
-                <div class="testimonial-box">
-                  <div class="box-top">
-                    <div class="profile-review">
-                      <div class="profile-img">
-                        <img src="images/c-1.jpg" />
-                      </div>
-                      <div class="name-user">
-                        <strong>Touseeq Ijaz</strong>
-                        <span>@touseeqijazweb</span>
-                      </div>
-                    </div>
-                    <div class="reviews">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 576 512"
-                      >
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="client-comment">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Exercitationem, quaerat quis? Provident temporibus
-                      architecto asperiores nobis maiores nisi a. Quae doloribus
-                      ipsum aliquam tenetur voluptates incidunt blanditiis sed
-                      atque cumque.
-                    </p>
-                  </div>
-                </div>{" "}
-                <div class="testimonial-box">
-                  <div class="box-top">
-                    <div class="profile-review">
-                      <div class="profile-img">
-                        <img src="images/c-1.jpg" />
-                      </div>
-                      <div class="name-user">
-                        <strong>Touseeq Ijaz</strong>
-                        <span>@touseeqijazweb</span>
-                      </div>
-                    </div>
-                    <div class="reviews">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 576 512"
-                      >
-                        <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="client-comment">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Exercitationem, quaerat quis? Provident temporibus
-                      architecto asperiores nobis maiores nisi a. Quae doloribus
-                      ipsum aliquam tenetur voluptates incidunt blanditiis sed
-                      atque cumque.
-                    </p>
-                  </div>
-                </div>
+              <div className="testimonial-box-container block">
+                {userProfile.reviews.map((review) => {
+                  const filteredProfiles = profiles.filter(
+                    (profile) => review.clientId._id === profile.id
+                  );
+                  if (filteredProfiles.length > 0) {
+                    return (
+                      <ReviewBox
+                        review={review}
+                        profile={filteredProfiles[0]}
+                      />
+                    );
+                  }
+                  return null;
+                })}
               </div>
             </section>
           </div>

@@ -437,6 +437,58 @@ const profilePhotoUploadCtrl = async (req, res) => {
   // 8.Remove image from the server
   fs.unlinkSync(imagePath)
 };
+
+
+const addToFavorites = async (req, res) => {
+  const { profileId, favoriteProfileId } = req.params;
+
+  try {
+    // Vérifier si le profil favori existe
+    const favoriteProfile = await Profile.findById(favoriteProfileId);
+    if (!favoriteProfile) {
+      return res.status(404).json({ message: "Le profil favori n'existe pas" });
+    }
+
+    // Ajouter le profil favori à la liste des favoris du profil
+    const profile = await Profile.findById(profileId);
+    profile.favorites.push(favoriteProfile);
+    await profile.save();
+
+    res.status(200).json({ message: "Le profil a été ajouté aux favoris" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Une erreur est survenue lors de l'ajout aux favoris" });
+  }
+};
+
+const removeFromFavorites = async (req, res) => {
+  const { profileId, favoriteProfileId } = req.params;
+
+  try {
+    // Supprimer le profil favori de la liste des favoris du profil
+    const profile = await Profile.findById(profileId);
+    profile.favorites.pull(favoriteProfileId);
+    await profile.save();
+
+    res.status(200).json({ message: "Le profil a été supprimé des favoris" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Une erreur est survenue lors de la suppression des favoris",
+      });
+  }
+};
+
+
+
+
+
+
+
+
+
 module.exports = {
   AddProfile,
   FindAllProfiles,
@@ -456,4 +508,6 @@ module.exports = {
   FindProfileByTransport,
   profilePhotoUploadCtrl,
   updatingRatingCtrl,
+  addToFavorites,
+  removeFromFavorites,
 };
