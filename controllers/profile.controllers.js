@@ -467,7 +467,7 @@ const removeFromFavorites = async (req, res) => {
 
   try {
     // Supprimer le profil favori de la liste des favoris du profil
-    const profile = await Profile.findById(profileId);
+    const profile = await profileModel.findById(profileId);
     profile.favorites.pull(favoriteProfileId);
     await profile.save();
 
