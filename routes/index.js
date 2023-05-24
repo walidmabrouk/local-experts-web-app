@@ -39,7 +39,7 @@ const { createPostCtrl, getAllPostsCtrl, getSinglePostCtrl, getPostCountCtrl, de
 const { createCommentCtrl, getAllCommentsCtrl, deleteCommentCtrl, updateCommentCtrl } = require("../controllers/comments.controller");
 const { createCategoryCtrl, getAllCategoriesCtrl, deleteCategoryCtrl } = require("../controllers/categories.controllers");
 const { createReservationCtrl, getReservationByProfessional, getAllReservationCtrl, updateReservationCtrl, deleteReservationCtrl } = require("../controllers/reservations.controllers");
-const { addReview, getProfessionalReviews } = require("../controllers/reviews.controllers");
+const { addReview, getProfessionalReviews, calculateAverageRating } = require("../controllers/reviews.controllers");
 /* users routes. */
 router.post("/register", Register);
 router.post("/login", Login);
@@ -244,8 +244,7 @@ router.post('/reviews', addReview);
 
 // Get all reviews for a professional
 router.get('/professionals/:professionalId/reviews',getProfessionalReviews);
-
-
+router.get('/professionals/:professionalId/reviews',getProfessionalReviews);
 
 router.post(
   "/profiles/:profileId/favorites/:favoriteProfileId",

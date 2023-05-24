@@ -25,13 +25,16 @@ const getProfessionalReviews = async (req, res) => {
 
   try {
     const reviews = await Review.find({ professionalId }).populate("clientId",);
-
+res.send(reviews);
     res.status(200).json({ reviews });
   } catch (error) {
     console.error("Error getting professional reviews:", error);
     res.status(500).json({ message: "Failed to get professional reviews" });
   }
 };
+
+
+
 
 module.exports = {
   addReview,

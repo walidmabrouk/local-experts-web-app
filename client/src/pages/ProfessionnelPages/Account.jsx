@@ -22,6 +22,7 @@ function Account() {
     await dispatch(await GetProfiles());
     await dispatch(await fetchPosts());
   }, []);
+  
  
   const userProfile = useSelector((state) => state.profiles.profile);
   console.log(userProfile);
@@ -54,7 +55,22 @@ function Account() {
      const handleRemoveFavorite = () => {
      axios.delete(`/api/profiles/${userProfile.id}/favorites/${id}`);
      
-   };
+  };
+//   const calculateAverageRating = (reviews) => {
+//     if (reviews.length === 0) {
+//       return 0; // Return 0 if there are no reviews
+//     }
+
+//     let sum = 0;
+//     for (let i = 0; i < reviews.length; i++) {
+//       sum += reviews[i].rating;
+//     }
+
+//     const average = sum / reviews.length;
+//     return average;
+//   };
+
+// const profileRating = calculateAverageRating()
   return (
     <div className="h-fit w-full mt-72 lg:mt-32">
       <AccountNav />
