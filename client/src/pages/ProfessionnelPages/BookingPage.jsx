@@ -8,6 +8,7 @@ import axios from "axios";
 import "moment/locale/fr";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProfile } from "../../redux/actions/profileActions";
+import "./Booking.css";
 const localizer = momentLocalizer(moment);
 moment.locale("fr"); 
 export default function BookingPage() {
@@ -50,6 +51,7 @@ export default function BookingPage() {
   return (
     <div className="my-8 mt-64">
       <AccountNav />
+      <div className="flex gap-10 ">
       <div className="App" style={{ padding: "14px" }}>
         <Calendar
           localizer={localizer}
@@ -71,27 +73,34 @@ export default function BookingPage() {
           views={[Views.MONTH, Views.WEEK, Views.DAY, Views.AGENDA]}
         />
       </div>
-      <form onSubmit={handleFormSubmit}>
-        <input
+      <form id="forinput" onSubmit={handleFormSubmit}>
+        <label>Titre</label><input
           type="text"
           name="title"
           value={reservationData.title}
           onChange={handleInputChange}
+          placeholder=" Entre un titre"
+          id="reservinput"
         />
-        <input
+        <label>Date début</label><input
           type="date"
           name="start"
           value={reservationData.start}
           onChange={handleInputChange}
+          id="reservinput"
         />
-        <input
+        <label>Date fin </label><input
           type="date"
           name="end"
           value={reservationData.end}
           onChange={handleInputChange}
+          id="reservinput"
         />
-        <button type="submit">Réserver</button>
+        <button type="submit"className="bg-blue-500 hover:bg-blue-500 text-white font-bold rounded px-2 py-1 mt-12" >
+          Réserver
+          </button>
       </form>
+      </div>
     </div>
   );
 }

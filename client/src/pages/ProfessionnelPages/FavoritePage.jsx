@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProfile, GetProfiles } from "../../redux/actions/profileActions";
 import Card from "../../components/Card";
-
+import "./Favorites.css";
 export default function FavoritePage() {
     const dispatch = useDispatch();
  const responsive = {
@@ -35,7 +35,8 @@ useEffect(async() => {
     <div className="my-8 mt-64">
       <AccountNav />
       <div>
-        <div className="flex favorie-box">
+        <h1 id="titlfav">Liste des favorites</h1>
+        <div className="flex favorie-box" id="favcontent" >
      
             {profile?.favorites?.map((profile) => (
               <Card

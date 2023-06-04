@@ -1,0 +1,16 @@
+#forinput{
+    display: flex;
+    flex-direction: column;
+    
+}
+#reservinput{
+border: 1px solid gray;
+border-radius: 3px;
+height: 7%;
+}
+label{
+    margin-top: 30%;
+    margin-bottom: 5%;
+    color: grey;
+
+}

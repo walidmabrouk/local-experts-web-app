@@ -19,7 +19,8 @@ function HomeNav() {
     return classes;
   }
   return (
-    <nav className="w-full flex justify-center gap-2 mb-8 Home-nav">
+    <nav className="w-full flex justify-center gap-2 mb-8 Home-nav"
+    style={{ marginTop: "7%" }}>
       <Link
         className={linkClasses("Profils")}
         to={`/`}

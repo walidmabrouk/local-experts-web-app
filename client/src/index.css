@@ -972,14 +972,7 @@ html {
     position: relative
 }
 
-.rating :where(input) {
-    --tw-bg-opacity: 1;
-    animation: rating-pop var(--animation-input, .25s) ease-out;
-    background-color: hsl(var(--bc)/var(--tw-bg-opacity));
-    cursor: pointer;
-    height: 1.5rem;
-    width: 1.5rem
-}
+
 
 .select {
     --tw-border-opacity: 0;
@@ -10280,6 +10273,7 @@ border: 1px solid rgb(183, 179, 179);
     font-size: 21px;
     padding: 10px;
     margin: 5px 0;
+    width: 100%;
 }
 
 
@@ -10733,7 +10727,7 @@ color: rgb(15, 20, 25);
 .rating {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
+  justify-content: left;
 }
 
 .rating:not(:checked) > input {

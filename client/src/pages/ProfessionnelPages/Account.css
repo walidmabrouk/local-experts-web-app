@@ -1,0 +1,33 @@
+#Avis-content{
+display:flex;
+flex-direction: column;
+border: 2px solid rgb(241, 239, 239);
+padding-left: 5%;
+margin-right: 30%;
+
+}
+#starbtn{
+    
+    
+
+}
+
+#avis-con{
+    display:flex;
+}
+#btnavis{
+    padding:1% 1% 1% 1%;
+    height: 2%;
+    width: 20%;
+    margin: 0% 0% 2% 5%;
+}
+#commtitle{
+    color: gray;
+
+}
+textarea {
+    height: 100%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    width: 40%;
+}
