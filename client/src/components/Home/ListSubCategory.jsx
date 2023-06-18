@@ -75,7 +75,7 @@ function ListSubCategory(props) {
                       imagesrc={profile.profilePhoto.url}
                       value={profile.price}
                       name={profile.user.name}
-                      category={profile.category}
+                      category={profile.subcategory}
                       Location={profile.city}
                     />
                   ) : null

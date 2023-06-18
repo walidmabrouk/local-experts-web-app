@@ -7,10 +7,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import HomeIMG from "../../assets/media/Home.png";
-import LeconsIMG from "../../assets/media/image__3_-removebg-preview.png";
-import clothes from "../../assets/media/plumber.jpg";
-import BienEtreIMG from "../../assets/media/dj.jpg.webp";
+import HomeIMG from "../../assets/media/dentiste.jpg";
+import LeconsIMG from "../../assets/media/cabinet.jpg";
+import clothes from "../../assets/media/sourire.jpeg";
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper";
 
@@ -27,27 +26,19 @@ export default function App() {
         pagination={{
           clickable: true,
         }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src={HomeIMG} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="swiper">
           <img src={LeconsIMG} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="swiper">
           <img src={clothes} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img src={BienEtreIMG} alt="" />
+        <SwiperSlide className="swiper">
+          <img src={HomeIMG} alt="" />
         </SwiperSlide>
-
       </Swiper>
     </>
   );

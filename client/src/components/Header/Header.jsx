@@ -142,8 +142,8 @@ function Header({ user, socket }) {
               <div className="mx-4">
                 {!user.isConnected ? (
                   <>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    <Link className="Navbarrr" to="/login">Connexion</Link>
+                    <Link to="/register">Registre</Link>
                   </>
                 ) : (
                   <div className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 ">

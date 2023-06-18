@@ -24,7 +24,7 @@ function Home() {
   useEffect(async () => {
     await dispatch(await fetchPosts(1));
     await dispatch(await GetProfile());
-  }, []);
+  },[] );
   const profiles = useSelector((state) => state.profiles);
   const posts = useSelector((state) => state.posts.posts);
 const responsive = {
@@ -256,7 +256,7 @@ const responsive = {
                         imagesrc={profile.profilePhoto.url}
                         value={profile.price}
                         name={profile.user.name}
-                        category={profile.category}
+                        category={profile.subcategory}
                         Location={profile.city}
                       />
                     ))}

@@ -9928,7 +9928,7 @@ a {
     width: 40px;
 }
 .Name-user{
-    width: 48px;
+    width: auto;
     padding-top: 3px;
 }
 .Icon{
@@ -9936,6 +9936,11 @@ a {
     margin-left: auto;
  
 
+}
+.swiper{
+    width: 100%;
+    margin-right: 2px;
+    height: 100%;
 }
 .dropdown{
   border-radius: 16px;
@@ -10725,9 +10730,7 @@ color: rgb(15, 20, 25);
         margin-bottom: 4%;
 }
 .rating {
-  display: flex;
   flex-direction: row-reverse;
-  justify-content: left;
 }
 
 .rating:not(:checked) > input {
@@ -10761,6 +10764,22 @@ color: rgb(15, 20, 25);
 .rating > input:checked ~ label {
   color: #ffa723;
 }
+.start{
+    margin-top: 0px;
+}
+label {
+    margin-top: 0px;
+    margin-bottom: 5%;
+    color: grey;
+}
+#btnavis{padding: 12px;}
+
+.text-a{
+    width: 1000px;
+    color: black;
+    height: 100px;
+}
+    
 .profile-review {
   display: flex;
   align-items: center;
@@ -10806,5 +10825,38 @@ padding: 10%;
   }
 }
 
-
-
+.update-profile-input {
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 12px;
+    border-color: #e0e0e0;
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.Navbarrr{
+margin-right: 8%;
+}
+.cardd{
+        gap: 1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.card-star{
+    z-index: 9999;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: whitesmoke;
+    border-radius: 30%;
+    width: 35px;
+    height: 35px;
+    padding: 2%;
+    border-top-right-radius: 0px;
+    border-end-end-radius: 0px;
+    opacity: 95%;}
+    @import url("~leaflet/dist/leaflet.css");
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+}

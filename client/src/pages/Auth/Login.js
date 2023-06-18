@@ -58,17 +58,17 @@ function Login() {
           />
           <Inputs
             name="password"
-            label="Password"
+            label="Mot de passe"
             type="password"
             icon="fa-solid fa-key"
             onChangeHandler={onChangeHandler}
             errors={errors.password}
           />
           <button type="submit" className="btn btn-primary ">
-            Login
+            Connexion
           </button>
           <div className="text-center py-2 text-gray-500">
-            <Link to="/register">I don't have account</Link>
+            <Link to="/register">j'ai pas un compte</Link>
           </div>
         </form>
       </div>

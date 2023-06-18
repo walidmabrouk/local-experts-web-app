@@ -9,6 +9,7 @@ const UserProfile = new Schema(
       required: true,
     },
     category: "string",
+    subcategory: "string",
     tel: "string",
     city: "string",
     rating: Number,

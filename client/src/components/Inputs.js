@@ -3,7 +3,7 @@ import Classnames from 'classnames'
 function Inputs({name, label, placeholder, value, type, icon, onChangeHandler, errors}) {
   return (
     <div>
-      <label className="label">{label}</label>
+      <label className="">{label}</label>
       <input
         type={type}
         value={value}
