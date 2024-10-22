@@ -1,51 +1,16 @@
-# PFE-PROJECT
-# Server
-npm install
-# Client
-cd client
+# Dynamic Web Application for Local Experts
 
-npm install
+## Overview
+This project is a dynamic web application designed to connect users with local experts across various fields. The platform allows users to search for, review, and connect with professionals in their area of interest.
 
+## Features
+- **User Registration and Authentication:** Users can create accounts and log in to access the platform.
+- **Expert Profiles:** Each expert has a detailed profile showcasing their skills, experience, and user reviews.
+- **Search and Filter:** Users can search for experts based on location, expertise, and ratings.
+- **Booking and Communication:** Users can book appointments and communicate with experts through the platform.
 
-# Together (concurrently)
-npm run dev
-
-# backend base url : http://localhost:3600/
-# frontend base url : http://localhost:3000/
-
-change the content of MONGO_URI in your .env file with you access URI mongoDB cloud
-
-# List of routes (backend)
-
-#Register
-
-/api/register (POST)
-
-#Login
-
-/api/login (POST)
-
-#Add profile
-
-/api/profiles (POST)
-
-#Get one profile
-
-/api/profile (GET)
-
-#get all profiles
-
-/api/profiles (GET)
-
-#Delete one profile
-
-/api/profiles/:id (DELETE)
-
-# List of routes (frontend)
-
-/ (profile)
-/register 
-/login
-/admin
-/notfound
-/noaccess
+## Technologies Used
+- **Frontend:** React, HTML5, CSS3
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Version Control:** Git, GitHub
